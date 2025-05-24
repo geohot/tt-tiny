@@ -1,0 +1,1 @@
+clang2py ioctl.h -o tt_ioctl.py -k cdefstum
