@@ -1,0 +1,79 @@
+Advice to Tenstorrent
+
+If you want to get acquired / become scam IP licensing co...I can't help you.
+
+If you want to win AI compute, read on
+
+===
+
+This is your 7th stack?
+
+Plz bro one more stack this stack will be good i promise
+bro bro bro plz one more make it all back one trade
+
+You can't build a castle on a shit swamp. LLK is the wrong approach.
+
+===
+
+Tenstorrent advantage is in more programmability wrt GPUs. Hardware shapes model arch.
+
+If you don't expose that programmability, you are guaranteed to lose. sfpi_elu is a problem.
+
+You aren't going to get better deals on tapeouts/IP than NVIDIA/AMD. You need some advantage.
+
+But but but it's all open source.
+
+===
+
+If you want a dataflow graph compiler, build a dataflow graph compiler.
+This is not 6 layers of abstraction, it's 3 (and only 2 you have to build).
+
+1. frontend <PyTorch, ONNX, tensor.py>
+2. compiler
+3. runtime/driver
+
+===
+
+Start with 3.
+
+The driver is fine.
+
+The runtime should JUST BE A RUNTIME. I better never see mention of a elu.
+
+Make the runtime expose hardware in a application agnostic way. Compilation, dispatch, queuing, etc...
+
+As long as LLK sits under tt-metalium, you aren't doing this.
+
+CUDA is a simple C API for this. I advise doing the same.
+
+===
+
+Now for 2.
+
+tinygrad is this, but you don't have to use it. MLIR/LLVM is probably fine.
+
+ELU still should not be here!!!!
+
+This should deal with memory placement, op scheduling, kernel fusion. Not ELU.
+
+This is not easy. But importing 6 abstraction layers of cruft doesn't fix that!!!!
+
+===
+
+Now for 1.
+
+self.elu() needs to have same perf as self.relu() - alpha*(1-self.exp()).relu()
+
+If it doesn't, you messed up. Only once it does are you ready to write elu.
+
+HINT for how to write ELU: def elu(self): return self.relu() - alpha*(1-self.exp()).relu()
+
+HINT is not a hint, it's the actual code.
+
+
+
+
+
+
+
+
