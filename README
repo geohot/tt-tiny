@@ -70,11 +70,3 @@ If it doesn't, you messed up. Only once it does are you ready to write elu.
 HINT for how to write ELU: def elu(self): return self.relu() - alpha*(1-self.exp()).relu()
 
 HINT is not a hint, it's the actual code.
-
-
-
-
-
-
-
-
